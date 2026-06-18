@@ -25,21 +25,37 @@
       color: #333;
     }
 
-    button, a.btn {
+    a.btn {
       display: inline-block;
       background: #4CAF50;
       color: white;
       text-decoration: none;
-      border: none;
       padding: 12px 20px;
       border-radius: 8px;
-      cursor: pointer;
       font-size: 16px;
       margin: 10px 5px;
     }
 
-    button:hover, a.btn:hover {
+    a.btn:hover {
       background: #45a049;
+    }
+
+    .links {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .links p {
+      margin: 8px 0;
+    }
+
+    .links a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
     }
 
     .contact {
@@ -53,15 +69,6 @@
     .contact h2 {
       margin-top: 0;
     }
-
-    .contact a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -74,8 +81,8 @@
     <a href="#contact" class="btn">Contact Us</a>
 
     <!-- Links -->
-    <div style="margin-top:20px;">
-      <p>📱 <a href="https://t.me/MaxstorebackupBot" target="_blank">WhatsApp Bot</a></p>
+    <div class="links">
+      <p>🤖 <a href="https://t.me/MaxstorebackupBot" target="_blank">WhatsApp Bot</a></p>
       <p>📢 <a href="https://www.whatsapp.com/channel/0029Vb8MeXU0bIdsd1m3BE2d" target="_blank">WhatsApp Channel</a></p>
       <p>💬 <a href="https://t.me/maxandfroststore" target="_blank">Telegram Group Chat</a></p>
     </div>
