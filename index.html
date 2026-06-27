@@ -3,37 +3,39 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>👑 Max Giveaway | Official by @kingvmax</title>
+<title>👑 Max Giveaway | Official by @kingvmax</title>
 
-    <meta
-        name="theme-color"
-        content="#111111">
+<meta name="theme-color" content="#111111">
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 </head>
 
 <body>
 
+<!-- ========================= -->
+<!-- Loading Screen -->
+<!-- ========================= -->
+
 <div id="loading">
 
-    <div class="loader"></div>
+<div class="loader"></div>
 
-    <h2>MAX GIVEAWAYS</h2>
+<h2>MAX GIVEAWAYS</h2>
 
-    <p>Loading...</p>
+<p>Loading...</p>
 
 </div>
+
+<!-- ========================= -->
+<!-- App -->
+<!-- ========================= -->
 
 <div id="app" style="display:none;">
 
@@ -64,10 +66,7 @@ ID: 0
 <div class="coins">
 
 🪙
-
-<span id="coins">
-0
-</span>
+<span id="coins">0</span>
 
 </div>
 
@@ -76,23 +75,21 @@ ID: 0
 </header>
 
 <main>
+<!-- ========================= -->
+<!-- HOME -->
+<!-- ========================= -->
 
 <section id="homePage" class="page active">
 
 <div class="welcomeCard">
 
-<h1>
-🎉 Welcome
-</h1>
+<h1>🎉 Welcome</h1>
 
 <p>
 
-Enter giveaways
-
-Win prizes
-
-Earn points
-
+Enter giveaways<br>
+Win prizes<br>
+Earn coins<br>
 Invite friends
 
 </p>
@@ -109,49 +106,33 @@ Invite friends
 
 <div class="card">
 
-<h3>
-🪙 Coins
-</h3>
+<h3>🪙 Coins</h3>
 
-<h2 id="coinCard">
-0
-</h2>
+<h2 id="coinCard">0</h2>
 
 </div>
 
 <div class="card">
 
-<h3>
-⭐ Points
-</h3>
+<h3>⭐ Points</h3>
 
-<h2 id="points">
-0
-</h2>
+<h2 id="points">0</h2>
 
 </div>
 
 <div class="card">
 
-<h3>
-👥 Referrals
-</h3>
+<h3>👥 Referrals</h3>
 
-<h2 id="refs">
-0
-</h2>
+<h2 id="refs">0</h2>
 
 </div>
 
 <div class="card">
 
-<h3>
-🏆 Rank
-</h3>
+<h3>🏆 Rank</h3>
 
-<h2 id="rank">
---
-</h2>
+<h2 id="rank">Bronze</h2>
 
 </div>
 
@@ -159,19 +140,23 @@ Invite friends
 
 </section>
 
+<!-- ========================= -->
+<!-- GIVEAWAYS -->
+<!-- ========================= -->
+
 <section id="giveawayPage" class="page">
 
-<h1>
-
-🎁 Active Giveaways
-
-</h1>
+<h1>🎁 Active Giveaways</h1>
 
 <div id="giveawayList">
 
 </div>
 
 </section>
+
+<!-- ========================= -->
+<!-- GAMES -->
+<!-- ========================= -->
 
 <section id="gamesPage" class="page">
 
@@ -183,7 +168,7 @@ Invite friends
 
 <h3>🎰 Slots</h3>
 
-<p>Cost: 10 Coins</p>
+<p>Entry Fee: 10 Coins</p>
 
 <button onclick="playSlots()">
 
@@ -197,7 +182,7 @@ Play
 
 <h3>🎲 Dice</h3>
 
-<p>Cost: 5 Coins</p>
+<p>Entry Fee: 5 Coins</p>
 
 <button onclick="playDice()">
 
@@ -211,7 +196,7 @@ Play
 
 <h3>🎯 Lucky Wheel</h3>
 
-<p>Cost: 20 Coins</p>
+<p>Entry Fee: 20 Coins</p>
 
 <button onclick="playWheel()">
 
@@ -225,7 +210,7 @@ Spin
 
 <h3>🎁 Daily Reward</h3>
 
-<p>Free every 24 hours</p>
+<p>Free Every 24 Hours</p>
 
 <button onclick="dailyReward()">
 
@@ -238,36 +223,41 @@ Claim
 </div>
 
 </section>
-
-<!-- Leaderboard -->
+<!-- ========================= -->
+<!-- LEADERBOARD -->
+<!-- ========================= -->
 
 <section id="leaderboardPage" class="page">
 
-<h1>
-
-🏆 Leaderboard
-
-</h1>
+<h1>🏆 Leaderboard</h1>
 
 <div id="leaderboard">
+
+<div class="leader">
+
+<span>Loading...</span>
+
+<span>0 🪙</span>
+
+</div>
 
 </div>
 
 </section>
 
+<!-- ========================= -->
+<!-- PROFILE -->
+<!-- ========================= -->
+
 <section id="profilePage" class="page">
 
-<h1>
-
-👤 Profile
-
-</h1>
+<h1>👤 Profile</h1>
 
 <div class="profileCard">
 
 <div class="bigAvatar">
 
-👑
+👤
 
 </div>
 
@@ -279,22 +269,61 @@ Loading...
 
 <p id="profileID">
 
-ID
+ID: 0
 
 </p>
 
+<div class="stats">
+
+<div class="card">
+
+<h3>🪙 Coins</h3>
+
+<h2 id="profileCoins">0</h2>
+
 </div>
 
+<div class="card">
+
+<h3>🏆 Rank</h3>
+
+<h2 id="profileRank">Bronze</h2>
+
+</div>
+
+<div class="card">
+
+<h3>👥 Referrals</h3>
+
+<h2 id="profileRefs">0</h2>
+
+</div>
+
+<div class="card">
+
+<h3>⭐ Points</h3>
+
+<h2 id="profilePoints">0</h2>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-<button data-page="adminNav" id="adminPage">
+<!-- ========================= -->
+<!-- ADMIN PANEL -->
+<!-- ========================= -->
 
-<h1>
+<section id="adminPage" class="page">
 
-👑 Owner Panel
+<h1>👑 Owner Panel</h1>
 
-</h1>
+<p style="text-align:center;color:#8b5cf6;margin-bottom:20px;">
+Only visible to <b>@kingvmax</b>
+</p>
 
 <div class="stats">
 
@@ -338,16 +367,36 @@ ID
 
 </div>
 
+<div class="card">
+
+<button id="manageCodes">
+
+🎟 Manage Codes
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="manageUsers">
+
+👥 Users
+
+</button>
+
+</div>
+
 </div>
 
 </section>
-<section id="settingsPage" class="page">   
+<!-- ========================= -->
+<!-- SETTINGS -->
+<!-- ========================= -->
 
-<h1>    
+<section id="settingsPage" class="page">
 
-⚙ Settings
-
-</h1>
+<h1>⚙ Settings</h1>
 
 <button id="themeBtn">
 
@@ -388,11 +437,6 @@ Thank you for supporting the official Mini App ❤️
 </p>
 
 </div>
-<div class="stats">
-
-...
-
-</div>
 
 <div class="ownerBadge">
 
@@ -408,22 +452,19 @@ Created by
 
 </section>
 
-
-</div>
-
 </main>
+
+<!-- ========================= -->
+<!-- NAVIGATION -->
+<!-- ========================= -->
 
 <nav>
 
-<button data-page="homePage">
+<button data-page="homePage" class="active">
 
 🏠
 
-<span>
-
-Home
-
-</span>
+<span>Home</span>
 
 </button>
 
@@ -431,11 +472,7 @@ Home
 
 🎁
 
-<span>
-
-Giveaway
-
-</span>
+<span>Giveaway</span>
 
 </button>
 
@@ -443,23 +480,15 @@ Giveaway
 
 🎮
 
-<span>
-
-Games
-
-</span>
+<span>Games</span>
 
 </button>
 
-<button data-page="leaderboardPage">   
+<button data-page="leaderboardPage">
 
 🏆
 
-<span>
-
-Top
-
-</span>
+<span>Top</span>
 
 </button>
 
@@ -467,23 +496,15 @@ Top
 
 👤
 
-<span>
-
-Profile
-
-</span>
+<span>Profile</span>
 
 </button>
 
-<button data-page="adminPage" id="adminNav">
+<button data-page="adminPage" id="adminNav" style="display:none;">
 
 👑
 
-<span>
-
-Admin
-
-</span>
+<span>Admin</span>
 
 </button>
 
@@ -491,17 +512,17 @@ Admin
 
 ⚙
 
-<span>
-
-Settings
-
-</span>
+<span>Settings</span>
 
 </button>
 
 </nav>
 
 </div>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT FILES -->
+<!-- ========================= -->
 
 <script src="app.js"></script>
 <script src="giveaway.js"></script>
@@ -511,8 +532,5 @@ Settings
 <script src="coins.js"></script>
 
 </body>
-</html>
 
-
-
-    
+</html>    
