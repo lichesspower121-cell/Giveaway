@@ -27,19 +27,13 @@ window.onload = function () {
 
 let user = tg.initDataUnsafe.user;
 
-// Hide Admin by default
 const adminButton = document.getElementById("adminNav");
-const adminPage = document.getElementById("adminPage");
 
-if (adminButton) adminButton.style.display = "none";
-if (adminPage) adminPage.style.display = "none";
-
-// Only show for @kingvmax
-if (user && user.username === "kingvmax") {
-
-    if (adminButton) adminButton.style.display = "flex";
-    if (adminPage) adminPage.style.display = "block";
-
+if (adminButton) {
+    adminButton.style.display =
+        (user && user.username === "kingvmax")
+            ? "flex"
+            : "none";
 }
 
 if (user) {
