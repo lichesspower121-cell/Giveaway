@@ -19,9 +19,9 @@
 
 <body>
 
-<!-- ========================= -->
+<!-- ===================== -->
 <!-- Loading Screen -->
-<!-- ========================= -->
+<!-- ===================== -->
 
 <div id="loading">
 
@@ -33,9 +33,9 @@
 
 </div>
 
-<!-- ========================= -->
-<!-- App -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- Main App -->
+<!-- ===================== -->
 
 <div id="app" style="display:none;">
 
@@ -66,6 +66,7 @@ ID: 0
 <div class="coins">
 
 🪙
+
 <span id="coins">0</span>
 
 </div>
@@ -75,9 +76,10 @@ ID: 0
 </header>
 
 <main>
-<!-- ========================= -->
-<!-- HOME -->
-<!-- ========================= -->
+
+<!-- ===================== -->
+<!-- HOME PAGE -->
+<!-- ===================== -->
 
 <section id="homePage" class="page active">
 
@@ -88,9 +90,9 @@ ID: 0
 <p>
 
 Enter giveaways<br>
-Win prizes<br>
+Win amazing prizes<br>
 Earn coins<br>
-Invite friends
+Invite friends and climb the leaderboard
 
 </p>
 
@@ -139,10 +141,9 @@ Invite friends
 </div>
 
 </section>
-
-<!-- ========================= -->
-<!-- GIVEAWAYS -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- GIVEAWAY PAGE -->
+<!-- ===================== -->
 
 <section id="giveawayPage" class="page">
 
@@ -150,13 +151,61 @@ Invite friends
 
 <div id="giveawayList">
 
+<div class="giveawayCard">
+
+<h2>🎉 Telegram Premium</h2>
+
+<p>
+
+Prize: 1 Month Telegram Premium
+
+</p>
+
+<p>
+
+Entry Fee: <b>50 Coins</b>
+
+</p>
+
+<button onclick="joinGiveaway(50)">
+
+Join Giveaway
+
+</button>
+
+</div>
+
+<div class="giveawayCard">
+
+<h2>💰 USDT Giveaway</h2>
+
+<p>
+
+Prize: $20 USDT
+
+</p>
+
+<p>
+
+Entry Fee: <b>100 Coins</b>
+
+</p>
+
+<button onclick="joinGiveaway(100)">
+
+Join Giveaway
+
+</button>
+
+</div>
+
 </div>
 
 </section>
 
-<!-- ========================= -->
-<!-- GAMES -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- GAMES PAGE -->
+<!-- ===================== -->
 
 <section id="gamesPage" class="page">
 
@@ -166,9 +215,9 @@ Invite friends
 
 <div class="card">
 
-<h3>🎰 Slots</h3>
+<h3>🎰 Lucky Slots</h3>
 
-<p>Entry Fee: 10 Coins</p>
+<p>Cost: 10 Coins</p>
 
 <button onclick="playSlots()">
 
@@ -180,9 +229,9 @@ Play
 
 <div class="card">
 
-<h3>🎲 Dice</h3>
+<h3>🎲 Lucky Dice</h3>
 
-<p>Entry Fee: 5 Coins</p>
+<p>Cost: 5 Coins</p>
 
 <button onclick="playDice()">
 
@@ -196,7 +245,7 @@ Play
 
 <h3>🎯 Lucky Wheel</h3>
 
-<p>Entry Fee: 20 Coins</p>
+<p>Cost: 20 Coins</p>
 
 <button onclick="playWheel()">
 
@@ -223,9 +272,9 @@ Claim
 </div>
 
 </section>
-<!-- ========================= -->
-<!-- LEADERBOARD -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- LEADERBOARD PAGE -->
+<!-- ===================== -->
 
 <section id="leaderboardPage" class="page">
 
@@ -235,7 +284,7 @@ Claim
 
 <div class="leader">
 
-<span>Loading...</span>
+<span>🥇 Loading...</span>
 
 <span>0 🪙</span>
 
@@ -245,9 +294,9 @@ Claim
 
 </section>
 
-<!-- ========================= -->
-<!-- PROFILE -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- PROFILE PAGE -->
+<!-- ===================== -->
 
 <section id="profilePage" class="page">
 
@@ -285,9 +334,9 @@ ID: 0
 
 <div class="card">
 
-<h3>🏆 Rank</h3>
+<h3>⭐ Points</h3>
 
-<h2 id="profileRank">Bronze</h2>
+<h2 id="profilePoints">0</h2>
 
 </div>
 
@@ -301,9 +350,9 @@ ID: 0
 
 <div class="card">
 
-<h3>⭐ Points</h3>
+<h3>🏆 Rank</h3>
 
-<h2 id="profilePoints">0</h2>
+<h2 id="profileRank">Bronze</h2>
 
 </div>
 
@@ -313,16 +362,18 @@ ID: 0
 
 </section>
 
-<!-- ========================= -->
-<!-- ADMIN PANEL -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- ADMIN PAGE -->
+<!-- ===================== -->
 
 <section id="adminPage" class="page">
 
 <h1>👑 Owner Panel</h1>
 
 <p style="text-align:center;color:#8b5cf6;margin-bottom:20px;">
-Only visible to <b>@kingvmax</b>
+
+Official Admin Panel
+
 </p>
 
 <div class="stats">
@@ -381,7 +432,27 @@ Only visible to <b>@kingvmax</b>
 
 <button id="manageUsers">
 
-👥 Users
+👥 Manage Users
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="viewStats">
+
+📊 Statistics
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="adminCoins">
+
+💰 Infinite Coins
 
 </button>
 
@@ -390,9 +461,9 @@ Only visible to <b>@kingvmax</b>
 </div>
 
 </section>
-<!-- ========================= -->
-<!-- SETTINGS -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- SETTINGS PAGE -->
+<!-- ===================== -->
 
 <section id="settingsPage" class="page">
 
@@ -432,7 +503,7 @@ Creator & Developer of Max Giveaway
 
 <p>
 
-Thank you for supporting the official Mini App ❤️
+Official Telegram Mini App
 
 </p>
 
@@ -454,9 +525,9 @@ Created by
 
 </main>
 
-<!-- ========================= -->
-<!-- NAVIGATION -->
-<!-- ========================= -->
+<!-- ===================== -->
+<!-- BOTTOM NAVIGATION -->
+<!-- ===================== -->
 
 <nav>
 
@@ -500,7 +571,11 @@ Created by
 
 </button>
 
-<button data-page="adminPage" id="adminNav" style="display:none;">
+<!-- Hidden unless @kingvmax -->
+<button
+data-page="adminPage"
+id="adminNav"
+style="display:none;">
 
 👑
 
@@ -520,9 +595,9 @@ Created by
 
 </div>
 
-<!-- ========================= -->
+<!-- ===================== -->
 <!-- JAVASCRIPT FILES -->
-<!-- ========================= -->
+<!-- ===================== -->
 
 <script src="app.js"></script>
 <script src="giveaway.js"></script>
@@ -533,4 +608,5 @@ Created by
 
 </body>
 
-</html>    
+</html>  
+  
