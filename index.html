@@ -1,98 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Giveaway Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-      margin: 0;
-      padding: 0;
-    }
 
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      text-align: center;
-    }
+    <meta charset="UTF-8">
 
-    h1 {
-      color: #333;
-    }
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    a.btn {
-      display: inline-block;
-      background: #4CAF50;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      margin: 10px 5px;
-    }
+    <title>👑 Max Giveaway | Official by @kingvmax</title>
 
-    a.btn:hover {
-      background: #45a049;
-    }
+    <meta
+        name="theme-color"
+        content="#111111">
 
-    .links {
-      margin-top: 20px;
-      text-align: left;
-    }
+    <link
+        rel="stylesheet"
+        href="style.css">
 
-    .links p {
-      margin: 8px 0;
-    }
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    .links a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-
-    .contact {
-      margin-top: 40px;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .contact h2 {
-      margin-top: 0;
-    }
-  </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>🎉 Welcome to the Giveaway!</h1>
-    <p>Join now and connect with us on Telegram, WhatsApp, and more.</p>
 
-    <!-- Buttons -->
-    <a href="https://t.me/kingvmax" target="_blank" class="btn">Join via Telegram</a>
-    <a href="#contact" class="btn">Contact Us</a>
+<div id="loading">
 
-    <!-- Links -->
-    <div class="links">
-      <p>🤖 <a href="https://t.me/MaxstorebackupBot" target="_blank">WhatsApp Bot</a></p>
-      <p>📢 <a href="https://www.whatsapp.com/channel/0029Vb8MeXU0bIdsd1m3BE2d" target="_blank">WhatsApp Channel</a></p>
-      <p>💬 <a href="https://t.me/maxandfroststore" target="_blank">Telegram Group Chat</a></p>
-    </div>
+    <div class="loader"></div>
 
-    <!-- Contact Section -->
-    <div id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <p>📱 Telegram: <a href="https://t.me/kingvmax" target="_blank">@kingvmax</a></p>
-      <p>📞 Phone: <a href="tel:09134157157">09134157157</a></p>
-    </div>
-  </div>
+    <h2>MAX GIVEAWAYS</h2>
+
+    <p>Loading...</p>
+
+</div>
+
+<div id="app" style="display:none;">
+
+<header>
+
+<div class="top">
+
+<div class="profile">
+
+<div class="avatar" id="avatar">
+👤
+</div>
+
+<div>
+
+<h2 id="username">
+Loading...
+</h2>
+
+<p id="userid">
+ID: 0
+</p>
+
+</div>
+
+</div>
+
+<div class="coins">
+
+🪙
+
+<span id="coins">
+0
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+<main>
+
+<section id="homePage" class="page active">
+
+<div class="welcomeCard">
+
+<h1>
+🎉 Welcome
+</h1>
+
+<p>
+
+Enter giveaways
+
+Win prizes
+
+Earn points
+
+Invite friends
+
+</p>
+
+<button id="enterGiveaway">
+
+🎁 Enter Giveaway
+
+</button>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+
+<h3>
+🪙 Coins
+</h3>
+
+<h2 id="coinCard">
+0
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>
+⭐ Points
+</h3>
+
+<h2 id="points">
+0
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>
+👥 Referrals
+</h3>
+
+<h2 id="refs">
+0
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>
+🏆 Rank
+</h3>
+
+<h2 id="rank">
+--
+</h2>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="giveawayPage" class="page">
+
+<h1>
+
+🎁 Active Giveaways
+
+</h1>
+
+<div id="giveawayList">
+
+</div>
+
+</section>
+
+<section id="gamesPage" class="page">
+
+<h1>🎮 Games</h1>
+
+<div class="stats">
+
+<div class="card">
+
+<h3>🎰 Slots</h3>
+
+<p>Cost: 10 Coins</p>
+
+<button onclick="playSlots()">
+
+Play
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎲 Dice</h3>
+
+<p>Cost: 5 Coins</p>
+
+<button onclick="playDice()">
+
+Play
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎯 Lucky Wheel</h3>
+
+<p>Cost: 20 Coins</p>
+
+<button onclick="playWheel()">
+
+Spin
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎁 Daily Reward</h3>
+
+<p>Free every 24 hours</p>
+
+<button onclick="dailyReward()">
+
+Claim
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Leaderboard -->
+
+<section id="leaderboardPage" class="page">
+
+<h1>
+
+🏆 Leaderboard
+
+</h1>
+
+<div id="leaderboard">
+
+</div>
+
+</section>
+
+<section id="profilePage" class="page">
+
+<h1>
+
+👤 Profile
+
+</h1>
+
+<div class="profileCard">
+
+<div class="bigAvatar">
+
+👑
+
+</div>
+
+<h2 id="profileName">
+
+Loading...
+
+</h2>
+
+<p id="profileID">
+
+ID
+
+</p>
+
+</div>
+
+
+</section>
+
+<section id="adminPage" class="page">
+
+<h1>
+
+👑 Owner Panel
+
+</h1>
+
+<div class="stats">
+
+<div class="card">
+
+<button id="createGiveaway">
+
+🎁 Create Giveaway
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="pickWinner">
+
+🏆 Pick Winner
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="addCoins">
+
+🪙 Add Coins
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button id="broadcast">
+
+📢 Broadcast
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<section id="settingsPage" class="page">   
+
+<h1>    
+
+⚙ Settings
+
+</h1>
+
+<button id="themeBtn">
+
+🌙 Dark Theme
+
+</button>
+
+<button id="aboutBtn">
+
+ℹ About
+
+</button>
+
+<div class="ownerCard">
+
+<h2>
+
+👑 Official Owner
+
+</h2>
+
+<h1>
+
+@kingvmax
+
+</h1>
+
+<p>
+
+Creator & Developer of Max Giveaway
+
+</p>
+
+<p>
+
+Thank you for supporting the official Mini App ❤️
+
+</p>
+
+</div>
+<div class="stats">
+
+...
+
+</div>
+
+<div class="ownerBadge">
+
+👑 Official Mini App
+
+<br>
+
+Created by
+
+<b>@kingvmax</b>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+<nav>
+
+<button data-page="homePage">
+
+🏠
+
+<span>
+
+Home
+
+</span>
+
+</button>
+
+<button data-page="giveawayPage">
+
+🎁
+
+<span>
+
+Giveaway
+
+</span>
+
+</button>
+
+<button data-page="gamesPage">
+
+🎮
+
+<span>
+
+Games
+
+</span>
+
+</button>
+
+<button data-page="leaderboardPage">   
+
+🏆
+
+<span>
+
+Top
+
+</span>
+
+</button>
+
+<button data-page="profilePage">
+
+👤
+
+<span>
+
+Profile
+
+</span>
+
+</button>
+
+<button data-page="adminPage" id="adminNav">
+
+👑
+
+<span>
+
+Admin
+
+</span>
+
+</button>
+
+<button data-page="settingsPage">
+
+⚙
+
+<span>
+
+Settings
+
+</span>
+
+</button>
+
+</nav>
+
+</div>
+
+<script src="app.js"></script>
+<script src="giveaway.js"></script>
+<script src="profile.js"></script>
+<script src="leaderboard.js"></script>
+<script src="settings.js"></script>
+<script src="coins.js"></script>
+
 </body>
 </html>
+
+
+
+    
