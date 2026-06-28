@@ -63,23 +63,37 @@ async function loadUser() {
     "&first_name=" + encodeURIComponent(user.first_name || "") +
     "&photo_url=" + encodeURIComponent(user.photo_url || "")
     );
+const data = await res.json();
+ document.getElementById("profileName").textContent =
+    data.first_name || user.first_name || "Unknown";
 
-    const data = await res.json();
+document.getElementById("profileID").textContent =
+    data.username
+        ? "@" + data.username
+        : "ID: " + data.id;   
 
     coins = Number(data.coins || 0);
     referrals = Number(data.referrals || 0);
     premium = Boolean(data.premium);
-    coins = Number(data.coins || 0);
-referrals = Number(data.referrals || 0);
-premium = Boolean(data.premium);
+   document.getElementById("profileCoins").textContent = coins;
+document.getElementById("profilePoints").textContent = coins;
+document.getElementById("profileRefs").textContent = referrals;
+
+if (user.id === ADMIN_ID) {
+    document.getElementById("profileRank").textContent = "👑 Owner";
+} else if (premium) {
+    document.getElementById("profileRank").textContent = "💎 Premium";
+} else {
+    document.getElementById("profileRank").textContent = "🥉 Member";
+}
 
 document.getElementById("profileName").textContent =
-    user.first_name || "Unknown";
+    user.first_name || data?.first_name || "Unknown";
 
 document.getElementById("profileID").textContent =
     user.username
         ? "@" + user.username
-        : "No Username";
+        : "ID: " + user.id;
 
     updateUI();
 
