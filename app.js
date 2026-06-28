@@ -96,10 +96,8 @@ function updateUI() {
     document.getElementById("profileName").textContent =
         user.first_name || "Unknown";
 
-    document.getElementById("profileID").textContent =
-        user.username
-            ? "@" + user.username
-            : "No Username";
+  document.getElementById("profileID").textContent =
+    "ID: " + user.id;
 
     document.getElementById("coins").textContent = coins;
     document.getElementById("coinCard").textContent = coins;
@@ -117,8 +115,22 @@ document.getElementById("profilePoints").textContent = coins;
 
 document.getElementById("profileRefs").textContent = referrals;
 
-document.getElementById("profileRank").textContent =
-    premium ? "💎 Premium" : "🥉 Bronze";
+if (user.id === ADMIN_ID) {
+
+    document.getElementById("profileRank").textContent =
+        "👑 Owner";
+
+} else if (premium) {
+
+    document.getElementById("profileRank").textContent =
+        "💎 Premium";
+
+} else {
+
+    document.getElementById("profileRank").textContent =
+        "🥉 Member";
+
+}
 
     if (user.id === ADMIN_ID) {
 
