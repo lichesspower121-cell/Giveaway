@@ -59,13 +59,80 @@ if (user) {
 // Mini App Coins
 // ===========================
 
-let coins = Number(
-    localStorage.getItem("coins") || 0
-);
+let coins = 0;
 
-document.getElementById("coins").innerHTML = coins;
-document.getElementById("coinCard").innerHTML = coins;
+async function loadCoins() {
 
+    if (!user) return;
+
+    try {
+
+        const res = await fetch(
+
+            "https://broken-fire-be9c.lichesspower121.workers.dev/user?id=" +
+
+            encodeURIComponent(user.id) +
+
+            "&username=" +
+
+            encodeURIComponent(user.username || "") +
+
+            "&first_name=" +
+
+            encodeURIComponent(user.first_name || "")
+
+        );
+
+        const data = await res.json();
+
+        coins = Number(data.coins || 0);
+
+        document.getElementById("coins").innerHTML = coins;
+
+        document.getElementById("coinCard").innerHTML = coins;
+
+        document.getElementById("points").innerHTML = coins;
+
+        document.getElementById("refs").innerHTML = data.referrals || 0;
+
+        document.getElementById("profileCoins").innerHTML = coins;
+
+        document.getElementById("profilePoints").innerHTML = coins;
+
+        document.getElementById("profileRefs").innerHTML =
+            data.referrals || 0;
+
+        if (user.id == 8264872439) {
+
+            document.getElementById("rank").innerHTML =
+                "👑 Owner";
+
+            document.getElementById("profileRank").innerHTML =
+                "👑 Owner";
+
+        }
+
+        else {
+
+            document.getElementById("rank").innerHTML =
+                "🥉 Member";
+
+            document.getElementById("profileRank").innerHTML =
+                "🥉 Member";
+
+        }
+
+    }
+
+    catch(e){
+
+        console.log(e);
+
+    }
+
+}
+
+loadCoins();
 // ===========================
 // Navigation
 // ===========================
