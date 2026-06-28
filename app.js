@@ -69,12 +69,25 @@ if (user) {
 // ===========================
 
 let coins = Number(
-    localStorage.getItem("coins") || 0
-);
+async function loadUser() {
 
-document.getElementById("coins").innerHTML = coins;
-document.getElementById("coinCard").innerHTML = coins;
+    if (!user) return;
 
+    const res = await fetch(
+        "https://broken-fire-be9c.lichesspower121.workers.dev/user?id=" + user.id
+    );
+
+    const data = await res.json();
+
+    document.getElementById("coins").innerHTML = data.coins;
+    document.getElementById("coinCard").innerHTML = data.coins;
+
+    document.getElementById("points").innerHTML = data.coins;
+    document.getElementById("refs").innerHTML = data.referrals;
+
+}
+
+loadUser();
 // ===========================
 // Navigation
 // ===========================
