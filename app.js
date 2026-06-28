@@ -65,6 +65,17 @@ async function loadUser() {
     coins = Number(data.coins || 0);
     referrals = Number(data.referrals || 0);
     premium = Boolean(data.premium);
+    coins = Number(data.coins || 0);
+referrals = Number(data.referrals || 0);
+premium = Boolean(data.premium);
+
+document.getElementById("profileName").textContent =
+    user.first_name || "Unknown";
+
+document.getElementById("profileID").textContent =
+    user.username
+        ? "@" + user.username
+        : "No Username";
 
     updateUI();
 
@@ -96,6 +107,18 @@ function updateUI() {
     document.getElementById("points").textContent = coins;
 
     document.getElementById("refs").textContent = referrals;
+    // ===========================
+// PROFILE PAGE
+// ===========================
+
+document.getElementById("profileCoins").textContent = coins;
+
+document.getElementById("profilePoints").textContent = coins;
+
+document.getElementById("profileRefs").textContent = referrals;
+
+document.getElementById("profileRank").textContent =
+    premium ? "💎 Premium" : "🥉 Bronze";
 
     if (user.id === ADMIN_ID) {
 
