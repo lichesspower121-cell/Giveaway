@@ -68,22 +68,31 @@ if (user) {
 // Mini App Coins
 // ===========================
 
-let coins = Number(
 async function loadUser() {
 
     if (!user) return;
 
-    const res = await fetch(
-        "https://broken-fire-be9c.lichesspower121.workers.dev/user?id=" + user.id
-    );
+    try {
 
-    const data = await res.json();
+        const res = await fetch(
+            "https://broken-fire-be9c.lichesspower121.workers.dev/user?id=" + user.id
+        );
 
-    document.getElementById("coins").innerHTML = data.coins;
-    document.getElementById("coinCard").innerHTML = data.coins;
+        const data = await res.json();
 
-    document.getElementById("points").innerHTML = data.coins;
-    document.getElementById("refs").innerHTML = data.referrals;
+        document.getElementById("coins").textContent = data.coins;
+        document.getElementById("coinCard").textContent = data.coins;
+        document.getElementById("points").textContent = data.coins;
+        document.getElementById("refs").textContent = data.referrals;
+
+    } catch (e) {
+
+        console.error(e);
+
+        document.getElementById("coins").textContent = "0";
+        document.getElementById("coinCard").textContent = "0";
+
+    }
 
 }
 
