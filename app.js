@@ -1,7 +1,6 @@
 // =====================================
 // MAX GIVEAWAY MINI APP
 // Batch 1
-// By @kingvmax
 // =====================================
 
 const tg = window.Telegram.WebApp;
@@ -9,117 +8,102 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
-// =====================================
-// CONFIG
-// =====================================
-
 const API = "https://broken-fire-be9c.lichesspower121.workers.dev";
-
 const ADMIN_ID = 8264872439;
 
-// =====================================
-// USER
-// =====================================
-
-const user = tg.initDataUnsafe.user || {};
+let user = tg.initDataUnsafe.user || null;
 
 let coins = 0;
 let referrals = 0;
 let premium = false;
 
-// =====================================
-// START
-// =====================================
+window.onload = async function () {
 
-window.addEventListener("load", async () => {
+    document.getElementById("loading").style.display = "flex";
+    document.getElementById("app").style.display = "none";
 
-    if (!user.id) {
+    try {
 
-        alert("Please open inside Telegram.");
+        if (!user || !user.id) {
+            throw new Error("Telegram user not found");
+        }
 
-        return;
+        await loadUser();
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Failed to load user.");
 
     }
 
-    await loadUser();
-
     document.getElementById("loading").style.display = "none";
-
     document.getElementById("app").style.display = "flex";
 
-});
-
-// =====================================
-// LOAD USER
-// =====================================
-console.log("Telegram user:", user);
-console.log("User ID:", user.id);
+};
 
 async function loadUser() {
 
     const res = await fetch(
 
         API +
-
         "/user?id=" + encodeURIComponent(user.id) +
-
         "&username=" + encodeURIComponent(user.username || "") +
-
         "&first_name=" + encodeURIComponent(user.first_name || "") +
-
         "&photo_url=" + encodeURIComponent(user.photo_url || "")
 
     );
 
+    if (!res.ok) {
+        throw new Error("API Error");
+    }
+
     const data = await res.json();
 
     coins = Number(data.coins || 0);
-
     referrals = Number(data.referrals || 0);
-
     premium = Boolean(data.premium);
 
     updateUI(data);
 
 }
 
-// =====================================
-// UPDATE UI
-// =====================================
-
 function updateUI(data) {
 
     // Header
 
     document.getElementById("username").textContent =
-        data.first_name || user.first_name || "User";
+        data.first_name || "Unknown";
 
     document.getElementById("userid").textContent =
         "ID: " + data.id;
 
+    document.getElementById("coins").textContent =
+        user.id === ADMIN_ID ? "∞" : coins;
+
     // Home
 
-    document.getElementById("coins").textContent =
-        user.id == ADMIN_ID ? "∞" : coins;
-
     document.getElementById("coinCard").textContent =
-        user.id == ADMIN_ID ? "∞" : coins;
+        user.id === ADMIN_ID ? "∞" : coins;
 
-    document.getElementById("points").textContent = coins;
+    document.getElementById("points").textContent =
+        coins;
 
-    document.getElementById("refs").textContent = referrals;
+    document.getElementById("refs").textContent =
+        referrals;
 
     document.getElementById("rank").textContent =
-        user.id == ADMIN_ID
+        user.id === ADMIN_ID
             ? "👑 Owner"
             : premium
                 ? "💎 Premium"
                 : "🥉 Member";
 
     // Profile
-    console.log("updateUI data:", data);
+
     document.getElementById("profileName").textContent =
-        data.first_name || user.first_name || "User";
+        data.first_name || "Unknown";
 
     document.getElementById("profileID").textContent =
         data.username
@@ -127,7 +111,7 @@ function updateUI(data) {
             : "ID: " + data.id;
 
     document.getElementById("profileCoins").textContent =
-        user.id == ADMIN_ID ? "∞" : coins;
+        user.id === ADMIN_ID ? "∞" : coins;
 
     document.getElementById("profilePoints").textContent =
         coins;
@@ -136,7 +120,7 @@ function updateUI(data) {
         referrals;
 
     document.getElementById("profileRank").textContent =
-        user.id == ADMIN_ID
+        user.id === ADMIN_ID
             ? "👑 Owner"
             : premium
                 ? "💎 Premium"
@@ -154,18 +138,14 @@ function updateUI(data) {
 
     }
 
-    // Admin
+    // Admin Button
 
-    const adminNav = document.getElementById("adminNav");
+    const admin = document.getElementById("adminNav");
 
-    if (user.id == ADMIN_ID || user.username == "kingvmax") {
-
-        adminNav.style.display = "flex";
-
+    if (user.id === ADMIN_ID || user.username === "kingvmax") {
+        admin.style.display = "flex";
     } else {
-
-        adminNav.style.display = "none";
-
+        admin.style.display = "none";
     }
 
 }
