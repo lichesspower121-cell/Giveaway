@@ -56,8 +56,12 @@ async function loadUser() {
 
     if (!user.id) return;
 
-    const res = await fetch(
-        API + "/user?id=" + user.id
+ const res = await fetch(
+    API +
+    "/user?id=" + encodeURIComponent(user.id) +
+    "&username=" + encodeURIComponent(user.username || "") +
+    "&first_name=" + encodeURIComponent(user.first_name || "") +
+    "&photo_url=" + encodeURIComponent(user.photo_url || "")
     );
 
     const data = await res.json();
