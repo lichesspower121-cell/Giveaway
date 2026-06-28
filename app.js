@@ -117,7 +117,7 @@ function updateUI(data) {
                 : "🥉 Member";
 
     // Profile
-
+    console.log("updateUI data:", data);
     document.getElementById("profileName").textContent =
         data.first_name || user.first_name || "User";
 
