@@ -52,6 +52,8 @@ window.addEventListener("load", async () => {
 // =====================================
 // LOAD USER
 // =====================================
+console.log("Telegram user:", user);
+console.log("User ID:", user.id);
 
 async function loadUser() {
 
