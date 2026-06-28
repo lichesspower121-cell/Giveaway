@@ -1,132 +1,47 @@
-// =====================================
+// ===========================
 // MAX GIVEAWAY MINI APP
-// Batch 1
-// =====================================
+// ===========================
 
 const tg = window.Telegram.WebApp;
 
 tg.ready();
 tg.expand();
 
-const API = "https://broken-fire-be9c.lichesspower121.workers.dev";
-const ADMIN_ID = 8264872439;
+// Loading Screen
 
-let user = tg.initDataUnsafe.user || null;
+window.onload = function () {
 
-let coins = 0;
-let referrals = 0;
-let premium = false;
+    setTimeout(function () {
 
-window.onload = async function () {
+        document.getElementById("loading").style.display = "none";
 
-    document.getElementById("loading").style.display = "flex";
-    document.getElementById("app").style.display = "none";
+        document.getElementById("app").style.display = "block";
 
-    try {
-
-        if (!user || !user.id) {
-            throw new Error("Telegram user not found");
-        }
-
-        await loadUser();
-
-    } catch (err) {
-
-        console.error(err);
-
-        alert("Failed to load user.");
-
-    }
-
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("app").style.display = "flex";
+    }, 1500);
 
 };
 
-async function loadUser() {
+// ===========================
+// Telegram User
+// ===========================
 
-    const res = await fetch(
+let user = tg.initDataUnsafe.user;
 
-        API +
-        "/user?id=" + encodeURIComponent(user.id) +
-        "&username=" + encodeURIComponent(user.username || "") +
-        "&first_name=" + encodeURIComponent(user.first_name || "") +
-        "&photo_url=" + encodeURIComponent(user.photo_url || "")
+if (user) {
 
-    );
+    document.getElementById("username").innerHTML =
+        user.first_name;
 
-    if (!res.ok) {
-        throw new Error("API Error");
-    }
+    document.getElementById("userid").innerHTML =
+        "ID: " + user.id;
 
-    const data = await res.json();
+    document.getElementById("profileName").innerHTML =
+        user.first_name;
 
-    coins = Number(data.coins || 0);
-    referrals = Number(data.referrals || 0);
-    premium = Boolean(data.premium);
-
-    updateUI(data);
-
-}
-
-function updateUI(data) {
-
-    // Header
-
-    document.getElementById("username").textContent =
-        data.first_name || "Unknown";
-
-    document.getElementById("userid").textContent =
-        "ID: " + data.id;
-
-    document.getElementById("coins").textContent =
-        user.id === ADMIN_ID ? "∞" : coins;
-
-    // Home
-
-    document.getElementById("coinCard").textContent =
-        user.id === ADMIN_ID ? "∞" : coins;
-
-    document.getElementById("points").textContent =
-        coins;
-
-    document.getElementById("refs").textContent =
-        referrals;
-
-    document.getElementById("rank").textContent =
-        user.id === ADMIN_ID
-            ? "👑 Owner"
-            : premium
-                ? "💎 Premium"
-                : "🥉 Member";
-
-    // Profile
-
-    document.getElementById("profileName").textContent =
-        data.first_name || "Unknown";
-
-    document.getElementById("profileID").textContent =
-        data.username
-            ? "@" + data.username
-            : "ID: " + data.id;
-
-    document.getElementById("profileCoins").textContent =
-        user.id === ADMIN_ID ? "∞" : coins;
-
-    document.getElementById("profilePoints").textContent =
-        coins;
-
-    document.getElementById("profileRefs").textContent =
-        referrals;
-
-    document.getElementById("profileRank").textContent =
-        user.id === ADMIN_ID
-            ? "👑 Owner"
-            : premium
-                ? "💎 Premium"
-                : "🥉 Member";
-
-    // Avatar
+    document.getElementById("profileID").innerHTML =
+        user.username
+        ? "@" + user.username
+        : "No Username";
 
     if (user.photo_url) {
 
@@ -138,14 +53,121 @@ function updateUI(data) {
 
     }
 
-    // Admin Button
+}
 
-    const admin = document.getElementById("adminNav");
+// ===========================
+// Mini App Coins
+// ===========================
 
-    if (user.id === ADMIN_ID || user.username === "kingvmax") {
-        admin.style.display = "flex";
-    } else {
-        admin.style.display = "none";
+let coins = Number(
+    localStorage.getItem("coins") || 0
+);
+
+document.getElementById("coins").innerHTML = coins;
+document.getElementById("coinCard").innerHTML = coins;
+
+// ===========================
+// Navigation
+// ===========================
+
+const pages =
+document.querySelectorAll(".page");
+
+const buttons =
+document.querySelectorAll("nav button");
+
+buttons.forEach(btn => {
+
+    btn.onclick = function () {
+
+        pages.forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+        buttons.forEach(button => {
+
+            button.classList.remove("active");
+
+        });
+
+        document
+            .getElementById(btn.dataset.page)
+            .classList.add("active");
+
+        btn.classList.add("active");
+
+        tg.HapticFeedback.selectionChanged();
+
     }
 
-}
+});
+
+// ===========================
+// Giveaway
+// ===========================
+
+document.getElementById(
+"enterGiveaway"
+).onclick = function(){
+
+tg.HapticFeedback.notificationOccurred(
+"success"
+);
+
+alert(
+
+"🎉 Entry Submitted!\n\n🍀 Good Luck!"
+
+);
+
+};
+
+// ===========================
+// Theme
+// ===========================
+
+document.getElementById(
+"themeBtn"
+).onclick=function(){
+
+alert(
+
+"🌙 Dark Theme\n\nAlready Enabled."
+
+);
+
+};
+
+// ===========================
+// About
+// ===========================
+
+document.getElementById(
+"aboutBtn"
+).onclick=function(){
+
+alert(
+
+"👑 MAX GIVEAWAY\n\n"+
+
+"Official Telegram Mini App\n\n"+
+
+"Owner & Developer\n"+
+
+"@kingvmax\n\n"+
+
+"🎁 Join Giveaways\n"+
+
+"🪙 Earn Coins\n"+
+
+"🏆 Win Rewards\n"+
+
+"👥 Invite Friends\n\n"+
+
+"Version 1.0"
+
+);
+
+};
