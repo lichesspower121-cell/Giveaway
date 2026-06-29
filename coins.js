@@ -1,34 +1,29 @@
 // =====================
-// Coins System
+// Cloudflare Coins
 // =====================
 
-let coins = Number(localStorage.getItem("coins") || 0);
+async function refreshCoins() {
 
-function updateCoins() {
+    if (!user) return;
 
-    localStorage.setItem("coins", coins);
+    const res = await fetch(
 
-    const coinTop = document.getElementById("coins");
-    const coinCard = document.getElementById("coinCard");
+        "https://broken-fire-be9c.lichesspower121.workers.dev/user?id=" +
 
-    if (coinTop) coinTop.textContent = coins;
-    if (coinCard) coinCard.textContent = coins;
-}
+        user.id
 
-function addCoins(amount) {
+    );
 
-    coins += amount;
+    const data = await res.json();
 
-    updateCoins();
+    coins = Number(data.coins || 0);
 
-}
+    document.getElementById("coins").textContent = coins;
+    document.getElementById("coinCard").textContent = coins;
 
-function removeCoins(amount) {
+    document.getElementById("points").textContent = coins;
 
-    coins = Math.max(0, coins - amount);
-
-    updateCoins();
+    document.getElementById("profileCoins").textContent = coins;
+    document.getElementById("profilePoints").textContent = coins;
 
 }
-
-updateCoins();
